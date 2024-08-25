@@ -4,10 +4,14 @@ import FoodItem from "./FoodItem";
 
 const FoodDisplay = ({ category }) => {
   const { food_list } = useContext(StoreContext);
+  
+  if (!food_list) {
+    return <div>Loading...</div>; 
+  }
 
   return (
     <div className="food-display mt-8 mx-auto max-w-[80%] text-center mb-8">
-      <h2 className="font-medium text-4xl  ">Top dishes near you</h2>
+      <h2 className="font-medium text-4xl">Top dishes near you</h2>
       <div className="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-8 mt-8">
         {food_list.map((item, index) => {
           if (category === "All" || category === item.category) {

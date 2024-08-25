@@ -17,6 +17,9 @@ module.exports = {
       },
     },
     extend: {
+      screens: {
+        "custom-hide": { max: "1049px" },
+      },
       fontFamily: {
         curs: ["cursive"],
       },
@@ -76,5 +79,9 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), require("tailwind-scrollbar-hide")],
+  plugins: [
+    require("flowbite/plugin"),
+    require("tailwindcss-animate"),
+    require("tailwind-scrollbar-hide"),
+  ],
 };
