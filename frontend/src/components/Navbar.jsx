@@ -21,19 +21,16 @@ const Navbar = ({ setLogin, footerRef }) => {
         </p>
       </Link>
       <ul className="hidden md:flex list-none gap-5 text-lg mt-3 font-semibold">
-        <Link to="/">
-          <li className="hover:underline hover:decoration-2 hover:underline-offset-8 hover:decoration-red-400 cursor-pointer">
-            Home
-          </li>
-        </Link>
-        <Link to="/">
-          <li className="hover:underline hover:decoration-2 hover:underline-offset-8 hover:decoration-red-400 cursor-pointer">
-            Menu
-          </li>
-        </Link>
-        <li className="hover:underline hover:decoration-2 hover:underline-offset-8 hover:decoration-red-400 cursor-pointer">
+        <a href="#home" className="hover:underline hover:decoration-2 hover:underline-offset-8 hover:decoration-red-400 cursor-pointer">
+          Home
+        </a>
+
+        <a href="#explore-menu" className="hover:underline hover:decoration-2 hover:underline-offset-8 hover:decoration-red-400 cursor-pointer">
+          Menu
+        </a>
+        <a href="#app-download" className="hover:underline hover:decoration-2 hover:underline-offset-8 hover:decoration-red-400 cursor-pointer">
           Mobile App
-        </li>
+        </a>
         <li
           className="hover:underline hover:decoration-2 hover:underline-offset-8 hover:decoration-red-400 cursor-pointer"
           onClick={scrollToFooter}

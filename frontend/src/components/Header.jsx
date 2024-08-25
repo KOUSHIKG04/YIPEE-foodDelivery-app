@@ -3,6 +3,7 @@ import React from "react";
 const Header = () => {
   return (
     <div
+      id="home"
       className=" flex items-center justify-center bg-no-repeat bg-contain bg-center relative mx-auto mt-5"
       style={{ backgroundImage: "url('/header_img.png')", height: "34vw" }}
     >
@@ -22,12 +23,13 @@ const Header = () => {
           mission is to satisfy your cravings and elevate your dining experience
           one delicious meal at a time.
         </p>
-        <button
+        <a
+          href="#explore-menu"
           type="button"
           className="bg-[#171818] mt-1 text-white py-2 px-5 rounded-2xl hover:bg-slate-100 hover:text-red-600 font-semibold md:px-4 md:py-2 sm:px-3 sm:py-1"
         >
           View Menu
-        </button>
+        </a>
       </div>
     </div>
   );

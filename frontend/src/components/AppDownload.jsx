@@ -3,7 +3,7 @@ import React from "react";
 
 const AppDownload = () => {
   return (
-    <div className="mt-24 mb-24 text-center font-medium text-[max(2vw,20px)]">
+    <div className="mt-24 mb-24 text-center font-medium text-[max(2vw,20px)]" id="app-download">
       <div className="flex flex-col items-center" id="a">
         <p>For Better Experience Download.</p>
         <div id="b" className="w-36 font-extrabold text-2xl text-red-500 pt-2">

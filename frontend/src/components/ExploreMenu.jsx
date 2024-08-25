@@ -3,7 +3,7 @@ import { menu_list } from "@/assets/frontend_assets/assets";
 
 const ExploreMenu = ({ category, setCategory }) => {
   return (
-    <div className="flex flex-col items-center justify-center mx-auto mt-12 sm:mt-16 md:mt-24 lg:mt-28">
+    <div className="flex flex-col items-center justify-center mx-auto mt-12 sm:mt-16 md:mt-24 lg:mt-28" id="explore-menu">
       <div className="flex flex-col items-center gap-4 sm:gap-6 md:gap-8 max-w-[90%] md:max-w-[80%] lg:max-w-[70%]">
         <h1 className="font-medium text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center w-full">
           Explore our menu
@@ -44,11 +44,11 @@ const ExploreMenu = ({ category, setCategory }) => {
               ))}
             </div>
           </div>
-          <p className="absolute   right-4 flex items-center gap-2 text-gray-900 font-semibold text-xs sm:text-sm md:text-base lg:text-lg">
+          <p className="absolute right-4 flex items-center gap-2 text-gray-900 font-semibold text-xs sm:text-sm md:text-base lg:text-lg">
             SCROLL
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="mt-0.5"
+              className="mt-0.5 h-6 w-6"
               width="20"
               height="20"
             >

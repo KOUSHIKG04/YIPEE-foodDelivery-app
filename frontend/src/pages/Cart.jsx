@@ -12,7 +12,7 @@ const Cart = () => {
       <div className="w-full max-w-5xl bg-white shadow-md rounded-lg p-9">
         <div className="flex flex-col lg:flex-row gap-8">
           <div className="flex-1 bg-gray-100 p-6 rounded-lg shadow-md">
-            <div className="grid grid-cols-6 gap-4 text-gray-500 text-xs sm:text-sm mb-4">
+            <div className=" font-semibold grid grid-cols-6 gap-4 text-gray-500 text-xs sm:text-sm mb-4">
               <p className="col-span-1">Items</p>
               <p className="col-span-1.5">Title</p>
               <p className="col-span-1">Price</p>
@@ -25,7 +25,7 @@ const Cart = () => {
               if (cartItems[item._id] > 0) {
                 return (
                   <div key={index} className="mb-4">
-                    <div className="grid grid-cols-6 gap-4 items-center text-black text-xs sm:text-sm mb-4">
+                    <div className="  grid grid-cols-6 gap-4 items-center text-black text-xs sm:text-sm mb-4">
                       <img
                         src={item.image}
                         alt={item.name}
@@ -70,24 +70,24 @@ const Cart = () => {
           </div>
 
           <div className="flex-1 bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-lg font-bold mb-4">Cart Totals</h2>
+            <h2 className="text-lg font-semibold mb-4 text-center">In Cart Totals</h2>
             <div className="flex flex-col gap-4">
               <div className="flex justify-between text-gray-600">
-                <p>Subtotal</p>
+                <p>Sub Total Amount</p>
                 <p>${getTotal()}</p>
               </div>
               <hr className="my-2" />
               <div className="flex justify-between text-gray-600">
                 <p>Delivery Fee</p>
-                <p>$2</p>
+                <p>${getTotal() === 0 ? 0 : 2}</p>
               </div>
               <hr className="my-2" />
-              <div className="flex justify-between text-gray-800 font-bold">
-                <p>Total</p>
-                <p>${getTotal() + 2}</p>
+              <div className="flex justify-between text-gray-800 font-semibold">
+                <p>Total Amount</p>
+                <p>${getTotal() === 0 ? 0 : getTotal() + 2}</p>
               </div>
-              <div className="mt-6">
-                <h2 className="text-lg font-bold mb-4">Promo Code</h2>
+              <div className="mt-3">
+                <h2 className="text-lg font-mediu mb-4 text"></h2>
                 <div className="flex items-center space-x-2">
                   <input
                     type="text"
@@ -95,7 +95,7 @@ const Cart = () => {
                     className="flex-grow px-4 py-2 border rounded-lg"
                   />
                   <button className="bg-red-500 text-white hover:bg-red-600 py-2 px-4 rounded-lg">
-                    Submit
+                    APPLY
                   </button>
                 </div>
               </div>

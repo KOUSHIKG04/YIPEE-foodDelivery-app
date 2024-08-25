@@ -76,12 +76,12 @@ const PlaceOrder = () => {
                 <hr className="my-2" />
                 <div className="flex justify-between text-gray-600 mb-2">
                   <p>Delivery Fee</p>
-                  <p>$2</p>
+                  <p>{getTotal() === 0 ? 0 : 2}</p>
                 </div>
                 <hr className="my-2" />
                 <div className="flex justify-between text-gray-800 font-bold mb-4">
                   <p>Total</p>
-                  <p>${getTotal() + 2}</p>
+                  <p>${getTotal() === 0 ? 0 : getTotal() + 2}</p>
                 </div>
               </div>
             </div>
