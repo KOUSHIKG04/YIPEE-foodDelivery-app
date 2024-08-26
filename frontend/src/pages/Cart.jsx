@@ -70,7 +70,9 @@ const Cart = () => {
           </div>
 
           <div className="flex-1 bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-lg font-semibold mb-4 text-center">In Cart Totals</h2>
+            <h2 className="text-lg font-semibold mb-4 text-center">
+              In Cart Totals
+            </h2>
             <div className="flex flex-col gap-4">
               <div className="flex justify-between text-gray-600">
                 <p>Sub Total Amount</p>
@@ -87,14 +89,14 @@ const Cart = () => {
                 <p>${getTotal() === 0 ? 0 : getTotal() + 2}</p>
               </div>
               <div className="mt-3">
-                <h2 className="text-lg font-mediu mb-4 text"></h2>
-                <div className="flex items-center space-x-2">
+                <h2 className="text-lg font-medium mb-4"></h2>
+                <div className="flex flex-col sm:flex-row items-center sm:space-x-2 space-y-2 sm:space-y-0">
                   <input
                     type="text"
                     placeholder="Enter Promo Code"
                     className="flex-grow px-4 py-2 border rounded-lg"
                   />
-                  <button className="bg-red-500 text-white hover:bg-red-600 py-2 px-4 rounded-lg">
+                  <button className="w-full sm:w-auto bg-red-500 text-white hover:bg-red-600 py-2 px-4 rounded-lg">
                     APPLY
                   </button>
                 </div>
