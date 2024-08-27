@@ -7,11 +7,9 @@ import {
 
 const addFood = async (req, res) => {
   try {
-    
     const { name, description, price: priceString, category } = req.body;
     const price = parseFloat(priceString);
 
-    
     addFoodSchema.parse({
       name,
       description,
@@ -32,6 +30,7 @@ const addFood = async (req, res) => {
     await food.save();
     res.json({
       message: "food added",
+      success: true,
     });
   } catch (error) {
     res.status(400).json({
@@ -46,6 +45,7 @@ const listFood = async (req, res) => {
     const foods = await foodModel.find({});
     res.json({
       data: foods,
+      success: true,
     });
   } catch (error) {
     res.status(500).json({
@@ -57,7 +57,6 @@ const listFood = async (req, res) => {
 
 const removeFood = async (req, res) => {
   try {
-  
     removeFoodSchema.parse(req.body);
 
     const food = await foodModel.findById(req.body.id);
@@ -72,6 +71,7 @@ const removeFood = async (req, res) => {
 
     res.json({
       message: "food removed",
+      success: true,
     });
   } catch (error) {
     res.status(400).json({

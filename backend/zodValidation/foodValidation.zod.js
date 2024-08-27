@@ -8,5 +8,5 @@ export const addFoodSchema = z.object({
 });
 
 export const removeFoodSchema = z.object({
-  id: z.string().min(1, "ID is required"),
+  id: z.string().nonempty("Required"),
 });
