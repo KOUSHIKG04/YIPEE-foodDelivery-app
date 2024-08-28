@@ -62,10 +62,10 @@ const List = ({ URL }) => {
   return (
     <div className="flex flex-col w-full">
       <p className="text-lg font-semibold ml-10 mb-4">All Food List</p>
-      <div className="w-full p-6">
+      <div className="w-full p-4 ml-4">
         <div className=" font-medium grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2 p-3 border-b bg-gray-100 text-xs sm:text-sm rounded-lg">
           <b>Image</b>
-          <b>Name</b>
+          <b className="ml-2">Name</b>
           <b className="hidden sm:block">Category</b>
           <b className="hidden md:block">Price</b>
           <b>Action</b>
@@ -80,7 +80,7 @@ const List = ({ URL }) => {
               alt={item.name}
               className="w-24 h-16 sm:w-30 sm:h-20 object-cover rounded-lg"
             />
-            <p>{item.name}</p>
+            <p className="ml-2">{item.name}</p>
             <p className="hidden sm:block">{item.category}</p>
             <p className="hidden md:block">${item.price}</p>
             <svg
