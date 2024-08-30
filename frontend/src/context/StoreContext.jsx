@@ -1,13 +1,15 @@
+import axios from "axios";
 import { createContext, useEffect, useState } from "react";
-import { food_list } from "@/assets/frontend_assets/assets.js";
-
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
   const URL = "http://localhost:3000";
+
   const [cartItems, setCartItems] = useState({});
   const [token, setToken] = useState("");
-  const addToCart = (itemId) => {
+  const [food_list, setFoodlist] = useState([]);
+
+  const addToCart = async (itemId) => {
     if (!cartItems[itemId]) {
       setCartItems((prev) => ({
         ...prev,
@@ -19,24 +21,42 @@ const StoreContextProvider = (props) => {
         [itemId]: prev[itemId] + 1,
       }));
     }
+
+    if (token) {
+      await axios.post(
+        `${URL}/api/v1/cart/add`,
+        {
+          itemId,
+        },
+        {
+          headers: {
+            token,
+          },
+        }
+      );
+    }
   };
 
-  const removeFromCart = (itemId) => {
+  const removeFromCart = async (itemId) => {
     setCartItems((prev) => ({
       ...prev,
       [itemId]: prev[itemId] - 1,
     }));
-  };
 
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      setToken(localStorage.getItem("token"));
+    if (token) {
+      await axios.delete(`${URL}/api/v1/cart/remove`, {
+        headers: {
+          token,
+        },
+        data: {
+          itemId,
+        },
+      });
     }
-  }, []);
+  };
 
   const getTotal = () => {
     let totalAmount = 0;
-
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
         const itemInfo = food_list.find((product) => product._id === item);
@@ -45,9 +65,45 @@ const StoreContextProvider = (props) => {
         }
       }
     }
-
     return totalAmount;
   };
+
+  const getFoodList = async () => {
+    try {
+      const response = await axios.get(`${URL}/api/v1/food/list`);
+      setFoodlist(response.data.data);
+    } catch (error) {
+      console.error("Error fetching food list:", error);
+    }
+  };
+
+  const loadCartData = async (token) => {
+    try {
+      const response = await axios.post(
+        `${URL}/api/v1/food/get`,
+        {},
+        {
+          headers: {
+            token,
+          },
+        }
+      );
+      setCartItems(response.data.cartData);
+    } catch (error) {
+      console.error("Error fetching food list:", error);
+    }
+  };
+
+  useEffect(() => {
+    async function loadData() {
+      await getFoodList();
+      if (localStorage.getItem("token")) {
+        setToken(localStorage.getItem("token"));
+        await loadCartData(localStorage.getItem("token"));
+      }
+    }
+    loadData();
+  }, []);
 
   const contextValue = {
     food_list,

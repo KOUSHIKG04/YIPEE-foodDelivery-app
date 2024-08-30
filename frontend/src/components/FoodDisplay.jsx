@@ -14,6 +14,9 @@ const FoodDisplay = ({ category }) => {
       <h2 className="font-medium text-4xl">Top dishes near you</h2>
       <div className="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-8 mt-8">
         {food_list.map((item, index) => {
+          if (food_list.length === 0) {
+            return <div>No food items available at the moment.</div>;
+          }
           if (category === "All" || category === item.category) {
             return (
               <FoodItem

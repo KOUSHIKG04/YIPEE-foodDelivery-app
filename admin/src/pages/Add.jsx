@@ -46,7 +46,7 @@ const Add = ({ URL }) => {
           name: "",
           description: "",
           price: "",
-          category: "Salad",
+          category: "",
         });
         setImage(false);
         setError(null);

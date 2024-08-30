@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 const Login = ({ setLogin }) => {
   const { URL, setToken } = useContext(StoreContext);
 
-  const [currentState, setCurrentState] = useState("Signup");
+  const [currentState, setCurrentState] = useState("Login");
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -128,7 +128,7 @@ const Login = ({ setLogin }) => {
           >
             {currentState === "Signup" ? "Create Account" : "Login"}
           </Button>
-          <div className="mt-4 flex items-center gap-2">
+          <div className=" mt-4 flex justify-center items-center gap-2">
             <Checkbox id="checkbox" className="rounded-full border-gray-300" />
             <Label
               htmlFor="checkbox"

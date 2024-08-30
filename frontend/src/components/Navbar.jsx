@@ -84,7 +84,7 @@ const Navbar = ({ setLogin, footerRef }) => {
               className="bg-red-500 text-white hover:bg-red-600 rounded-3xl h-8"
               onClick={() => setLogin(true)}
             >
-              SIGN UP
+              LOG IN
             </Button>
           ) : (
             <div className="relative">

@@ -102,10 +102,6 @@ export const menu_list = [
     menu_image: menu_4,
   },
   {
-    menu_name: "Cake",
-    menu_image: menu_5,
-  },
-  {
     menu_name: "Pure Veg",
     menu_image: menu_6,
   },
@@ -254,7 +250,7 @@ export const food_list = [
     image: food_17,
     price: 14,
     description: "Moist and fluffy cupcake topped with creamy frosting.",
-    category: "Cake",
+    category: "Desserts",
   },
   {
     _id: "18",
@@ -262,7 +258,7 @@ export const food_list = [
     image: food_18,
     price: 12,
     description: "Delicious plant-based cake that’s rich and indulgent.",
-    category: "Cake",
+    category: "Desserts",
   },
   {
     _id: "19",
@@ -270,7 +266,7 @@ export const food_list = [
     image: food_19,
     price: 20,
     description: "Rich butterscotch cake with layers of smooth frosting.",
-    category: "Cake",
+    category: "Desserts",
   },
   {
     _id: "20",
@@ -278,7 +274,7 @@ export const food_list = [
     image: food_20,
     price: 15,
     description: "A slice of our finest cake, perfect for a quick treat.",
-    category: "Cake",
+    category: "Desserts",
   },
   {
     _id: "21",

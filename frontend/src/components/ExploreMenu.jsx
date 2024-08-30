@@ -44,17 +44,19 @@ const ExploreMenu = ({ category, setCategory }) => {
               ))}
             </div>
           </div>
-          <p className="absolute right-4 flex items-center gap-2 text-gray-900 font-semibold text-xs sm:text-sm md:text-base lg:text-lg">
+          <div >
+          <p className="mt-2 absolute right-4 flex items-center gap-2 text-gray-600 font-medium text-xs sm:text-sm md:text-base lg:text-lg">
             SCROLL
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="mt-0.5 h-6 w-6"
+              className=" h-6 w-6"
               width="20"
               height="20"
             >
               <path d="M10 20A10 10 0 1 0 0 10a10 10 0 0 0 10 10zM8.711 4.3l5.7 5.766L8.7 15.711l-1.4-1.422 4.289-4.242-4.3-4.347z" />
             </svg>
           </p>
+          </div>
         </div>
       </div>
       <hr className="my-4 h-0.5 bg-gray-500 border-none" />
