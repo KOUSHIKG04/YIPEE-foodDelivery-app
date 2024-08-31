@@ -12,7 +12,7 @@ const Cart = () => {
       <div className="w-full max-w-5xl bg-white shadow-md rounded-lg p-9">
         <div className="flex flex-col lg:flex-row gap-8">
           <div className="flex-1 bg-gray-100 p-6 rounded-lg shadow-md">
-            <div className=" font-semibold grid grid-cols-6 gap-4 text-gray-500 text-xs sm:text-sm mb-4">
+            <div className="font-semibold grid grid-cols-6 gap-4 text-gray-500 text-xs sm:text-sm mb-4">
               <p className="col-span-1">Items</p>
               <p className="col-span-1.5">Title</p>
               <p className="col-span-1">Price</p>
@@ -21,52 +21,57 @@ const Cart = () => {
               <p className="col-span-0.5">Remove</p>
             </div>
             <hr className="my-4" />
-            {food_list.map((item, index) => {
-              if (cartItems[item._id] > 0) {
-                return (
-                  <div key={index} className="mb-4">
-                    <div className="  grid grid-cols-6 gap-4 items-center text-black text-xs sm:text-sm mb-4">
-                      <img
-                        src={`${URL}/images/${item.image}`}
-                        alt={item.name}
-                        className="w-12 sm:w-16 rounded-lg"
-                      />
-                      <p className="col-span-1.5">{item.name}</p>
-                      <p className="col-span-1">${item.price}</p>
-                      <p className="col-span-1 pl-2">{cartItems[item._id]}</p>
-                      <p className="col-span-1">
-                        ${item.price * cartItems[item._id]}
-                      </p>
-                      <svg
-                        onClick={() => removeFromCart(item._id)}
-                        xmlns="http://www.w3.org/2000/svg"
-                        x="0px"
-                        y="0px"
-                        className="cursor-pointer pl-3 w-8 h-8"
-                        width="100"
-                        height="100"
-                        viewBox="0 0 48 48"
-                      >
-                        <path
-                          fill="#f44336"
-                          d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"
-                        ></path>
-                        <path
-                          fill="#fff"
-                          d="M29.656,15.516l2.828,2.828l-14.14,14.14l-2.828-2.828L29.656,15.516z"
-                        ></path>
-                        <path
-                          fill="#fff"
-                          d="M32.484,29.656l-2.828,2.828l-14.14-14.14l2.828-2.828L32.484,29.656z"
-                        ></path>
-                      </svg>
+            {food_list && food_list.length > 0 ? (
+              food_list.map((item, index) => {
+                const itemId = item._id;
+                const quantity = cartItems[itemId];
+
+                if (quantity > 0) {
+                  return (
+                    <div key={index} className="mb-4">
+                      <div className="grid grid-cols-6 gap-4 items-center text-black text-xs sm:text-sm mb-4">
+                        <img
+                          src={`${URL}/images/${item.image}`}
+                          alt={item.name}
+                          className="w-12 sm:w-16 rounded-lg"
+                        />
+                        <p className="col-span-1.5">{item.name}</p>
+                        <p className="col-span-1">${item.price}</p>
+                        <p className="col-span-1 pl-2">{quantity}</p>
+                        <p className="col-span-1">${item.price * quantity}</p>
+                        <svg
+                          onClick={() => removeFromCart(itemId)}
+                          xmlns="http://www.w3.org/2000/svg"
+                          x="0px"
+                          y="0px"
+                          className="cursor-pointer pl-3 w-8 h-8"
+                          width="100"
+                          height="100"
+                          viewBox="0 0 48 48"
+                        >
+                          <path
+                            fill="#f44336"
+                            d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"
+                          ></path>
+                          <path
+                            fill="#fff"
+                            d="M29.656,15.516l2.828,2.828l-14.14,14.14l-2.828-2.828L29.656,15.516z"
+                          ></path>
+                          <path
+                            fill="#fff"
+                            d="M32.484,29.656l-2.828,2.828l-14.14-14.14l2.828-2.828L32.484,29.656z"
+                          ></path>
+                        </svg>
+                      </div>
+                      <hr className="my-4" />
                     </div>
-                    <hr className="my-4" />
-                  </div>
-                );
-              }
-              return null;
-            })}
+                  );
+                }
+                return null;
+              })
+            ) : (
+              <p className="text-center text-gray-500">No items in cart</p>
+            )}
           </div>
 
           <div className="flex-1 bg-white p-6 rounded-lg shadow-md">

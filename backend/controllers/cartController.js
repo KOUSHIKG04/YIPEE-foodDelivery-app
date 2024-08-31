@@ -1,7 +1,15 @@
 import userModel from "../models/userModel.js";
+import {
+  getCartSchema,
+  addToCartSchema,
+  removeFromCartSchema,
+  userSchema,
+} from "../zodValidation/uaerValidation.zod.js";
 
 export const addToCart = async (req, res) => {
   try {
+    addToCartSchema.parse(req.body);
+
     let userData = await userModel.findOne({ _id: req.body.user._id });
     let cartData = userData.cartData || {};
 
@@ -19,6 +27,13 @@ export const addToCart = async (req, res) => {
     });
   } catch (error) {
     console.log(error);
+    if (error instanceof z.ZodError) {
+      return res.status(400).json({
+        success: false,
+        message: error.errors.map((e) => e.message).join(", "),
+      });
+    }
+
     res.json({
       success: false,
       message: "Error adding to cart",
@@ -28,6 +43,8 @@ export const addToCart = async (req, res) => {
 
 export const removeFromCart = async (req, res) => {
   try {
+    removeFromCartSchema.parse(req.body);
+
     let userData = await userModel.findOne({ _id: req.body.user._id });
 
     if (!userData) {
@@ -60,6 +77,13 @@ export const removeFromCart = async (req, res) => {
     }
   } catch (error) {
     console.log(error);
+    if (error instanceof z.ZodError) {
+      return res.status(400).json({
+        success: false,
+        message: error.errors.map((e) => e.message).join(", "),
+      });
+    }
+
     res.json({
       success: false,
       message: "Error removing item from cart",
@@ -69,6 +93,8 @@ export const removeFromCart = async (req, res) => {
 
 export const getCart = async (req, res) => {
   try {
+    getCartSchema.parse(req.body);
+
     let userData = await userModel.findOne({ _id: req.body.user._id });
 
     if (!userData) {
@@ -86,6 +112,13 @@ export const getCart = async (req, res) => {
     });
   } catch (error) {
     console.log(error);
+    if (error instanceof z.ZodError) {
+      return res.status(400).json({
+        success: false,
+        message: error.errors.map((e) => e.message).join(", "),
+      });
+    }
+
     res.json({
       success: false,
       message: "Error retrieving cart data",
